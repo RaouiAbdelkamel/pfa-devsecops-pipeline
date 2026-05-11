@@ -1,0 +1,73 @@
+{
+  "accuracy": 0.74375,
+  "roc_auc": 0.7805928133796985,
+  "classification_report": {
+    "0": {
+      "precision": 0.8020833333333334,
+      "recall": 0.7777777777777778,
+      "f1-score": 0.7897435897435897,
+      "support": 99.0
+    },
+    "1": {
+      "precision": 0.65625,
+      "recall": 0.6885245901639344,
+      "f1-score": 0.672,
+      "support": 61.0
+    },
+    "accuracy": 0.74375,
+    "macro avg": {
+      "precision": 0.7291666666666667,
+      "recall": 0.7331511839708561,
+      "f1-score": 0.7308717948717949,
+      "support": 160.0
+    },
+    "weighted avg": {
+      "precision": 0.746484375,
+      "recall": 0.74375,
+      "f1-score": 0.7448538461538462,
+      "support": 160.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      77,
+      22
+    ],
+    [
+      19,
+      42
+    ]
+  ],
+  "n_train_samples": 640,
+  "n_test_samples": 160,
+  "n_features": 10,
+  "feature_names": [
+    "severity_level",
+    "cvss_score",
+    "cwe_id_confidence",
+    "lines_of_code_affected",
+    "function_complexity",
+    "is_third_party_lib",
+    "has_test_coverage",
+    "file_age_days",
+    "number_of_contributors",
+    "previous_similar_vulns"
+  ],
+  "target_names": {
+    "0": "True Positive",
+    "1": "False Positive"
+  },
+  "training_date": "2026-05-11T12:16:51.036104",
+  "feature_importance": {
+    "severity_level": 0.2085842854279197,
+    "cvss_score": 0.20556493330058703,
+    "cwe_id_confidence": 0.11835555206902001,
+    "lines_of_code_affected": 0.09340960043553141,
+    "function_complexity": 0.07288748918476981,
+    "is_third_party_lib": 0.01695240397022234,
+    "has_test_coverage": 0.020026124711535094,
+    "file_age_days": 0.11032897921927962,
+    "number_of_contributors": 0.08826421534635648,
+    "previous_similar_vulns": 0.06562641633477857
+  }
+}
