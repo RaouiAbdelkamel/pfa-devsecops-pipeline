@@ -69,3 +69,52 @@ jobs:
           severity: CRITICAL,HIGH
           format: table
           exit-code: 0
+
+  ai-security-model:
+    name: AI Security Model - Risk Scoring
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install AI service dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r ai-service/requirements.txt
+
+      - name: Check AI model files
+        run: |
+          test -f ai-service/model/model.pkl
+          test -f ai-service/model/scaler.pkl
+          test -f ai-service/model/metrics.json
+          echo "AI model files found successfully"
+
+      - name: Start AI FastAPI service
+        run: |
+          cd ai-service
+          uvicorn inference.predict:app --host 0.0.0.0 --port 8000 &
+          sleep 10
+
+      - name: Test AI health endpoint
+        run: |
+          curl -f http://127.0.0.1:8000/health
+
+      - name: Test AI prediction endpoint
+        run: |
+          curl -X POST http://127.0.0.1:8000/predict \
+            -H "Content-Type: application/json" \
+            -d '{
+              "severity": "HIGH",
+              "tool": "semgrep",
+              "rule_id": "python.flask.security.injection",
+              "category": "injection",
+              "file_path": "app/app.py",
+              "line_number": 15,
+              "confidence": 0.90
+            }'
