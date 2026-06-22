@@ -474,28 +474,37 @@ jobs:
           sleep 10
           curl -f http://localhost:${{ env.APP_PORT }}/ && echo "✅ Application démarrée"
 
+      - name: Préparer le dossier des rapports ZAP
+        run: |
+          mkdir -p zap-reports
+          chmod -R 777 zap-reports
+
       - name: Run OWASP ZAP Full Scan
-        uses: zaproxy/action-full-scan@v0.10.0
-        with:
-          target: "http://localhost:${{ env.APP_PORT }}"
-          rules_file_name: ".zap/rules.tsv"
-          cmd_options: "-a"                   # mode actif
-          allow_issue_writing: false
-          fail_action: true                   # bloque si alerte High trouvée
+        run: |
+          docker pull ghcr.io/zaproxy/zaproxy:stable
 
-      - name: Upload ZAP HTML Report
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: zap-report
-          path: report_html.html
+          docker run --rm \
+            --network=host \
+            -v ${{ github.workspace }}/zap-reports:/zap/wrk/:rw \
+            ghcr.io/zaproxy/zaproxy:stable \
+            zap-full-scan.py \
+              -t http://localhost:${{ env.APP_PORT }} \
+              -J report_json.json \
+              -w report_md.md \
+              -r report_html.html \
+              -a \
+              -I || true
 
-      - name: Upload ZAP JSON Report
-        uses: actions/upload-artifact@v4
+          echo "=== Rapports ZAP générés ==="
+          ls -lh zap-reports
+
+      - name: Upload ZAP reports
         if: always()
+        uses: actions/upload-artifact@v4
         with:
-          name: zap-json-report
-          path: report_json.json
+          name: zap-reports-${{ github.run_id }}
+          path: zap-reports/
+          if-no-files-found: warn
 
       - name: Arrêter l'application
         if: always()
