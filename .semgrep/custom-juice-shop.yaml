@@ -1,0 +1,31 @@
+rules:
+  - id: custom-flask-sql-injection
+    patterns:
+      - pattern: |
+          $QUERY = "..." + $VAR + "..."
+          $CURSOR.execute($QUERY)
+    message: SQL Injection via string concatenation detected
+    languages: [python]
+    severity: ERROR
+    metadata:
+      cwe: CWE-89
+      confidence: HIGH
+
+  - id: custom-flask-command-injection
+    patterns:
+      - pattern: subprocess.check_output($CMD + $VAR, shell=True)
+    message: Command Injection via shell=True detected
+    languages: [python]
+    severity: ERROR
+    metadata:
+      cwe: CWE-78
+      confidence: HIGH
+
+  - id: custom-hardcoded-secret
+    pattern-regex: '(api_key|secret|password)\s*=\s*"[A-Za-z0-9+/]{20,}"'
+    message: Hardcoded secret detected in source code
+    languages: [python]
+    severity: ERROR
+    metadata:
+      cwe: CWE-798
+      confidence: HIGH

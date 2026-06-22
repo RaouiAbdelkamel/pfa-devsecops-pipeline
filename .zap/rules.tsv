@@ -1,0 +1,11 @@
+# ZAP Rules Configuration — Gestion des faux positifs DAST
+10020IGNOREInformation Disclosure
+10021IGNOREX-Content-Type-Options header missing
+10038IGNOREContent Security Policy header missing
+10096IGNORETimestamp disclosure
+40012FAILCross Site Scripting Reflected
+40014FAILCross Site Scripting Persistent
+40018FAILSQL Injection
+40019FAILSQL Injection MySQL
+40022FAILSQL Injection SQLite
+90020FAILRemote OS Command Injection
