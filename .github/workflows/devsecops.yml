@@ -48,16 +48,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout full history (pour scanner tous les commits)
+      - name: Checkout source code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0          # obligatoire pour scanner l'historique Git complet
+          fetch-depth: 0
 
-       - name: Run TruffleHog scan
-        uses: trufflesecurity/trufflehog@v3.88.1
-        with:
-          path: ./
-          extra_args: --only-verified
+      - name: Run TruffleHog scan
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/repo" \
+            trufflesecurity/trufflehog:latest \
+            filesystem /repo \
+            --only-verified \
+            --fail
+        continue-on-error: false
 
 # ═══════════════════════════════════════════════════════════════════════════════
 #  JOB 2a — SAST avec Semgrep
