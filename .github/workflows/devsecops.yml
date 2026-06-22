@@ -226,15 +226,17 @@ jobs:
       - name: Afficher les métriques du modèle
         run: |
           echo "=== Métriques du modèle IA ==="
-          python3 -c "
+          python3 <<'PY'
           import json
+
           with open('ai-service/model/metrics.json') as f:
               m = json.load(f)
-          print(f'Accuracy  : {m[\"accuracy\"]:.3f}')
-          print(f'AUC-ROC   : {m[\"roc_auc\"]:.3f}')
-          "
 
-            - name: Démarrer et vérifier le service IA FastAPI
+          print(f"Accuracy   : {m['accuracy']:.3f}")
+          print(f"AUC-ROC    : {m['roc_auc']:.3f}")
+          PY
+
+      - name: Démarrer et vérifier le service IA FastAPI
         run: |
           cd ai-service
 
@@ -249,20 +251,20 @@ jobs:
           echo "Attente du démarrage de l'API IA..."
           for i in {1..60}; do
             if curl -fs http://127.0.0.1:${{ env.AI_PORT }}/health > health.json; then
-              echo "✅ API IA démarrée correctement"
+              echo "API IA démarrée correctement"
               cat health.json | python3 -m json.tool
               exit 0
             fi
 
-            echo "⏳ API IA non prête, tentative $i/60..."
+            echo "API IA non prête, tentative $i/60..."
             sleep 1
           done
 
-          echo "❌ ERREUR : API IA non joignable après 60 secondes"
+          echo "ERREUR : API IA non joignable après 60 secondes"
           echo "===== Logs Uvicorn ====="
           cat uvicorn.log || true
           exit 1
-          
+
       - name: Upload AI service logs
         if: always()
         uses: actions/upload-artifact@v4
