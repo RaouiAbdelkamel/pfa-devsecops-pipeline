@@ -234,16 +234,41 @@ jobs:
           print(f'AUC-ROC   : {m[\"roc_auc\"]:.3f}')
           "
 
-      - name: Démarrer le service IA FastAPI
+            - name: Démarrer et vérifier le service IA FastAPI
         run: |
           cd ai-service
-          uvicorn inference.predict:app --host 0.0.0.0 --port ${{ env.AI_PORT }} &
-          echo "Attente démarrage de l'API..."
-          sleep 15
 
-      - name: Vérifier le health check de l'API IA
-        run: |
-          curl -f http://127.0.0.1:${{ env.AI_PORT }}/health | python3 -m json.tool
+          nohup python -m uvicorn inference.predict:app \
+            --host 127.0.0.1 \
+            --port ${{ env.AI_PORT }} \
+            > uvicorn.log 2>&1 &
+
+          echo $! > uvicorn.pid
+          echo "PID Uvicorn : $(cat uvicorn.pid)"
+
+          echo "Attente du démarrage de l'API IA..."
+          for i in {1..60}; do
+            if curl -fs http://127.0.0.1:${{ env.AI_PORT }}/health > health.json; then
+              echo "✅ API IA démarrée correctement"
+              cat health.json | python3 -m json.tool
+              exit 0
+            fi
+
+            echo "⏳ API IA non prête, tentative $i/60..."
+            sleep 1
+          done
+
+          echo "❌ ERREUR : API IA non joignable après 60 secondes"
+          echo "===== Logs Uvicorn ====="
+          cat uvicorn.log || true
+          exit 1
+          
+      - name: Upload AI service logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-service-logs
+          path: ai-service/uvicorn.log
 
       - name: Tester la prédiction IA (alerte SQL Injection)
         run: |
