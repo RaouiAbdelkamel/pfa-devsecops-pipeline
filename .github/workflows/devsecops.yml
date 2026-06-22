@@ -213,14 +213,32 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
-      - name: Install AI service dependencies
+      - name: Install AI dependencies
         run: |
+          python -m pip install --upgrade pip
           pip install -r ai-service/requirements.txt
+          pip install -r ai-training/requirements.txt
+
+      - name: Réentraîner le modèle IA dans l'environnement CI
+        run: |
+          echo "=== Suppression des anciens fichiers IA incompatibles ==="
+          mkdir -p ai-service/model
+          rm -f ai-service/model/model.pkl
+          rm -f ai-service/model/scaler.pkl
+          rm -f ai-service/model/explainer.pkl
+          rm -f ai-service/model/metrics.json
+
+          echo "=== Réentraînement du modèle IA avec les versions GitHub Actions ==="
+          cd ai-training
+          python train.py --output ../ai-service/model --samples 1500
+
+          echo "=== Nouveaux fichiers générés ==="
+          ls -lh ../ai-service/model
 
       - name: Vérifier la présence des fichiers modèle
         run: |
-          test -f ai-service/model/model.pkl   && echo "✅ model.pkl trouvé"
-          test -f ai-service/model/scaler.pkl  && echo "✅ scaler.pkl trouvé"
+          test -f ai-service/model/model.pkl && echo "✅ model.pkl trouvé"
+          test -f ai-service/model/scaler.pkl && echo "✅ scaler.pkl trouvé"
           test -f ai-service/model/metrics.json && echo "✅ metrics.json trouvé"
 
       - name: Afficher les métriques du modèle
