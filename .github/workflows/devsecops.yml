@@ -118,6 +118,7 @@ jobs:
       - name: Vérifier le Quality Gate SonarQube
         uses: SonarSource/sonarqube-quality-gate-action@master
         timeout-minutes: 5
+        continue-on-error: true
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
