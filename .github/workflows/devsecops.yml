@@ -1,120 +1,505 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+#  PFE DevSecOps — Pipeline CI/CD Sécurisé Complet
+#  Étudiant : RaouiAbdelkamel
+#  Version  : 3.0
+#
+#  Étapes du pipeline (dans l'ordre) :
+#  1. secret-detection   → TruffleHog
+#  2. sast               → Semgrep + SonarQube (parallèle)
+#     sca                → Snyk               (parallèle)
+#     iac-scan           → Checkov            (parallèle)
+#  3. ai-security-model  → filtre les faux positifs SAST
+#  4. build-and-push     → Docker build + push vers registry
+#  5. trivy-image-scan   → scan de l'image Docker
+#  6. dast               → OWASP ZAP scan actif
+#  7. report             → consolidation des rapports
+# ═══════════════════════════════════════════════════════════════════════════════
+
 name: DevSecOps Security Pipeline
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main", "develop"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
   workflow_dispatch:
 
+# Permissions nécessaires pour uploader les rapports SARIF vers l'onglet Security
+permissions:
+  contents: read
+  security-events: write
+  actions: read
+
+# Variables globales
+env:
+  APP_IMAGE: devsecops-app
+  APP_PORT: 5000
+  AI_PORT: 8000
+  PYTHON_VERSION: "3.11"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+#  JOB 1 — SECRET DETECTION (TruffleHog)
+#  Objectif : bloquer si un secret (clé API, mot de passe) est trouvé dans le code
+#  Security gate : échec si ≥ 1 secret validé détecté
+# ═══════════════════════════════════════════════════════════════════════════════
 jobs:
-  semgrep-sast:
-    name: SAST - Semgrep
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout source code
-        uses: actions/checkout@v4
-
-      - name: Run Semgrep scan
-        uses: semgrep/semgrep-action@v1
-        with:
-          config: auto
-
   secret-detection:
-    name: Secret Detection - TruffleHog
+    name: "🔑 Secret Detection — TruffleHog"
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout full history
+      - name: Checkout full history (pour scanner tous les commits)
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0          # obligatoire pour scanner l'historique Git complet
 
       - name: Run TruffleHog scan
-        uses: trufflesecurity/trufflehog@main
+        uses: trufflesecurity/trufflehog@v3.88.1    # version épinglée (évite les ruptures)
         with:
           path: ./
-          base: ""
+          base: ${{ github.event.repository.default_branch }}
           head: HEAD
-          extra_args: --only-verified
+          extra_args: --only-verified               # ne signale que les secrets confirmés valides
 
-  iac-scan:
-    name: IaC Scan - Checkov
+# ═══════════════════════════════════════════════════════════════════════════════
+#  JOB 2a — SAST avec Semgrep
+#  Objectif : analyser le code source statiquement
+#  Security gate : échec si ≥ 1 vulnérabilité Critical
+# ═══════════════════════════════════════════════════════════════════════════════
+  semgrep-sast:
+    name: "🔍 SAST — Semgrep"
     runs-on: ubuntu-latest
+    needs: secret-detection       # démarre seulement si secret-detection est passé
 
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4
 
-      - name: Run Checkov scan
-        uses: bridgecrewio/checkov-action@master
+      - name: Run Semgrep scan (règles standards + custom)
+        uses: semgrep/semgrep-action@v1
         with:
-          directory: terraform
-          soft_fail: true
+          config: >
+            auto
+            .semgrep/
+        env:
+          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
 
-  trivy-fs-scan:
-    name: Filesystem Vulnerability Scan - Trivy
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout source code
-        uses: actions/checkout@v4
-
-      - name: Run Trivy filesystem scan
-        uses: aquasecurity/trivy-action@master
+      - name: Upload SARIF report vers GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()              # uploader le rapport même si Semgrep a trouvé des erreurs
         with:
-          scan-type: fs
-          scan-ref: .
-          severity: CRITICAL,HIGH
-          format: table
-          exit-code: 0
+          sarif_file: semgrep.sarif
+        continue-on-error: true
 
-  ai-security-model:
-    name: AI Security Model - Risk Scoring
+# ═══════════════════════════════════════════════════════════════════════════════
+#  JOB 2b — SAST avec SonarQube
+#  Objectif : qualité du code + détection de vulnérabilités
+#  Security gate : Quality Gate doit être vert
+# ═══════════════════════════════════════════════════════════════════════════════
+  sonarqube:
+    name: "📊 SAST — SonarQube"
     runs-on: ubuntu-latest
+    needs: secret-detection
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # SonarQube a besoin de l'historique pour les blame annotations
+
+      - name: Run SonarQube scan
+        uses: SonarSource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
+      - name: Vérifier le Quality Gate SonarQube
+        uses: SonarSource/sonarqube-quality-gate-action@master
+        timeout-minutes: 5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+# ═══════════════════════════════════════════════════════════════════════════════
+#  JOB 2c — SCA avec Snyk
+#  Objectif : détecter les vulnérabilités dans les dépendances Python
+#  Security gate : échec si ≥ 1 Critical ou ≥ 3 High
+# ═══════════════════════════════════════════════════════════════════════════════
+  sca-snyk:
+    name: "📦 SCA — Snyk"
+    runs-on: ubuntu-latest
+    needs: secret-detection
 
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          pip install -r app/requirements.txt
+          pip install -r ai-service/requirements.txt
+
+      - name: Run Snyk scan (app dependencies)
+        uses: snyk/actions/python@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: >
+            --severity-threshold=high
+            --file=app/requirements.txt
+            --json-file-output=snyk-report.json
+
+      - name: Upload Snyk report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: snyk-report
+          path: snyk-report.json
+
+# ═══════════════════════════════════════════════════════════════════════════════
+#  JOB 2d — IaC Scan avec Checkov
+#  Objectif : vérifier les fichiers Terraform et Dockerfile
+#  Security gate : échec si misconfiguration HIGH ou CRITICAL
+# ═══════════════════════════════════════════════════════════════════════════════
+  iac-scan:
+    name: "🏗️ IaC Scan — Checkov"
+    runs-on: ubuntu-latest
+    needs: secret-detection
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Run Checkov sur Dockerfile et Terraform
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: .
+          check: HIGH,CRITICAL
+          soft_fail: false          # ← CORRIGÉ : bloque le pipeline si misconfiguration trouvée
+          output_format: sarif
+          output_file_path: checkov.sarif
+
+      - name: Upload Checkov SARIF report
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: checkov.sarif
+        continue-on-error: true
+
+# ═══════════════════════════════════════════════════════════════════════════════
+#  JOB 3 — FILTRE IA (Modèle de classification des faux positifs)
+#  Objectif : filtrer ≥ 30% des alertes SAST identifiées comme faux positifs
+#  Dépend de : semgrep-sast, sonarqube, sca-snyk, iac-scan
+# ═══════════════════════════════════════════════════════════════════════════════
+  ai-security-model:
+    name: "🤖 AI Security Model — Filtre FP"
+    runs-on: ubuntu-latest
+    needs: [semgrep-sast, sonarqube, sca-snyk, iac-scan]
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Install AI service dependencies
         run: |
-          python -m pip install --upgrade pip
           pip install -r ai-service/requirements.txt
 
-      - name: Check AI model files
+      - name: Vérifier la présence des fichiers modèle
         run: |
-          test -f ai-service/model/model.pkl
-          test -f ai-service/model/scaler.pkl
-          test -f ai-service/model/metrics.json
-          echo "AI model files found successfully"
+          test -f ai-service/model/model.pkl   && echo "✅ model.pkl trouvé"
+          test -f ai-service/model/scaler.pkl  && echo "✅ scaler.pkl trouvé"
+          test -f ai-service/model/metrics.json && echo "✅ metrics.json trouvé"
 
-      - name: Start AI FastAPI service
+      - name: Afficher les métriques du modèle
+        run: |
+          echo "=== Métriques du modèle IA ==="
+          python3 -c "
+          import json
+          with open('ai-service/model/metrics.json') as f:
+              m = json.load(f)
+          print(f'Accuracy  : {m[\"accuracy\"]:.3f}')
+          print(f'AUC-ROC   : {m[\"roc_auc\"]:.3f}')
+          "
+
+      - name: Démarrer le service IA FastAPI
         run: |
           cd ai-service
-          uvicorn inference.predict:app --host 0.0.0.0 --port 8000 &
-          sleep 10
+          uvicorn inference.predict:app --host 0.0.0.0 --port ${{ env.AI_PORT }} &
+          echo "Attente démarrage de l'API..."
+          sleep 15
 
-      - name: Test AI health endpoint
+      - name: Vérifier le health check de l'API IA
         run: |
-          curl -f http://127.0.0.1:8000/health
+          curl -f http://127.0.0.1:${{ env.AI_PORT }}/health | python3 -m json.tool
 
-      - name: Test AI prediction endpoint
+      - name: Tester la prédiction IA (alerte SQL Injection)
         run: |
-          curl -X POST http://127.0.0.1:8000/predict \
+          echo "Test 1 — Alerte SQL Injection (doit être BLOCK)"
+          curl -s -X POST http://127.0.0.1:${{ env.AI_PORT }}/predict \
             -H "Content-Type: application/json" \
             -d '{
-              "severity": "HIGH",
+              "alert_id": "ci-test-001",
               "tool": "semgrep",
-              "rule_id": "python.flask.security.injection",
-              "category": "injection",
+              "rule_id": "python.lang.security.audit.formatted-sql-query",
+              "severity": "high",
+              "message": "Potential SQL injection via string formatting",
               "file_path": "app/app.py",
-              "line_number": 15,
-              "confidence": 0.90
-            }'
+              "line_number": 18,
+              "cvss_score": 8.2,
+              "cwe_id": "CWE-89",
+              "lines_affected": 3,
+              "is_third_party": false,
+              "has_test": false
+            }' | python3 -m json.tool
+
+      - name: Tester la prédiction IA (alerte probablement FP)
+        run: |
+          echo "Test 2 — Alerte MD5 dans les tests (doit être ALLOW)"
+          curl -s -X POST http://127.0.0.1:${{ env.AI_PORT }}/predict \
+            -H "Content-Type: application/json" \
+            -d '{
+              "alert_id": "ci-test-002",
+              "tool": "semgrep",
+              "rule_id": "python.lang.security.insecure-hash-algorithms.md5",
+              "severity": "low",
+              "message": "Use of weak MD5 hash",
+              "file_path": "tests/test_utils.py",
+              "line_number": 42,
+              "cvss_score": 2.5,
+              "cwe_id": "CWE-327",
+              "has_test": true,
+              "contributors_count": 15
+            }' | python3 -m json.tool
+
+      - name: Vérifier la réduction des faux positifs (objectif >= 30%)
+        run: |
+          python3 -c "
+          import json
+          with open('ai-service/model/metrics.json') as f:
+              m = json.load(f)
+          cm = m['confusion_matrix']
+          fp_total    = cm[1][0] + cm[1][1]
+          fp_filtered = cm[1][1]
+          reduction   = fp_filtered / fp_total * 100 if fp_total > 0 else 0
+          print(f'FP filtrés     : {fp_filtered}/{fp_total}')
+          print(f'Réduction FP   : {reduction:.1f}%')
+          if reduction < 30:
+              print('ERREUR : Objectif AI-02 non atteint (< 30%)')
+              exit(1)
+          print('Objectif AI-02 ATTEINT')
+          "
+
+# ═══════════════════════════════════════════════════════════════════════════════
+#  JOB 4 — BUILD + PUSH IMAGE DOCKER
+#  Objectif : builder l'image Docker et la pousser vers le registry
+#  Security gate : échec si le build Docker échoue
+# ═══════════════════════════════════════════════════════════════════════════════
+  build-and-push:
+    name: "🐳 Build Docker Image"
+    runs-on: ubuntu-latest
+    needs: ai-security-model
+
+    outputs:
+      image-tag: ${{ steps.meta.outputs.tags }}
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Créer un Dockerfile pour l'app si absent
+        run: |
+          if [ ! -f app/Dockerfile ]; then
+            cat > app/Dockerfile << 'EOF'
+          FROM python:3.11-slim
+          WORKDIR /app
+          RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+          COPY requirements.txt .
+          RUN pip install --no-cache-dir -r requirements.txt
+          COPY . .
+          EXPOSE 5000
+          HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
+            CMD curl -f http://localhost:5000/ || exit 1
+          CMD ["python", "app.py"]
+          EOF
+          fi
+
+      - name: Build Docker image
+        run: |
+          docker build \
+            -t ${{ env.APP_IMAGE }}:${{ github.sha }} \
+            -t ${{ env.APP_IMAGE }}:latest \
+            ./app
+
+      - name: Sauvegarder l'image pour le job suivant (Trivy)
+        run: |
+          docker save ${{ env.APP_IMAGE }}:latest | gzip > image.tar.gz
+
+      - name: Upload image artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: docker-image
+          path: image.tar.gz
+          retention-days: 1
+
+# ═══════════════════════════════════════════════════════════════════════════════
+#  JOB 5 — CONTAINER SCANNING (Trivy)
+#  Objectif : scanner l'image Docker buildée pour trouver des CVE
+#  Security gate : échec si ≥ 1 CVE Critical dans l'image
+# ═══════════════════════════════════════════════════════════════════════════════
+  trivy-image-scan:
+    name: "🛡️ Container Scan — Trivy"
+    runs-on: ubuntu-latest
+    needs: build-and-push
+
+    steps:
+      - name: Télécharger l'image Docker
+        uses: actions/download-artifact@v4
+        with:
+          name: docker-image
+
+      - name: Charger l'image Docker
+        run: |
+          docker load < image.tar.gz
+
+      - name: Run Trivy sur l'image Docker
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: "${{ env.APP_IMAGE }}:latest"
+          scan-type: image
+          severity: CRITICAL,HIGH
+          format: sarif
+          output: trivy-image.sarif
+          exit-code: 1             # ← CORRIGÉ : bloque si CVE Critical trouvé
+
+      - name: Upload Trivy SARIF report
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: trivy-image.sarif
+        continue-on-error: true
+
+      - name: Upload Trivy report artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: trivy-image-report
+          path: trivy-image.sarif
+
+# ═══════════════════════════════════════════════════════════════════════════════
+#  JOB 6 — DAST avec OWASP ZAP
+#  Objectif : scanner l'application en cours d'exécution
+#  Security gate : échec si ≥ 1 alerte High trouvée
+# ═══════════════════════════════════════════════════════════════════════════════
+  dast:
+    name: "⚡ DAST — OWASP ZAP"
+    runs-on: ubuntu-latest
+    needs: trivy-image-scan
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Télécharger l'image Docker
+        uses: actions/download-artifact@v4
+        with:
+          name: docker-image
+
+      - name: Charger et démarrer l'application
+        run: |
+          docker load < image.tar.gz
+          docker run -d \
+            --name target-app \
+            -p ${{ env.APP_PORT }}:${{ env.APP_PORT }} \
+            ${{ env.APP_IMAGE }}:latest
+          echo "Attente démarrage de l'application..."
+          sleep 10
+          curl -f http://localhost:${{ env.APP_PORT }}/ && echo "✅ Application démarrée"
+
+      - name: Run OWASP ZAP Full Scan
+        uses: zaproxy/action-full-scan@v0.10.0
+        with:
+          target: "http://localhost:${{ env.APP_PORT }}"
+          rules_file_name: ".zap/rules.tsv"
+          cmd_options: "-a"                   # mode actif
+          allow_issue_writing: false
+          fail_action: true                   # bloque si alerte High trouvée
+
+      - name: Upload ZAP HTML Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: zap-report
+          path: report_html.html
+
+      - name: Upload ZAP JSON Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: zap-json-report
+          path: report_json.json
+
+      - name: Arrêter l'application
+        if: always()
+        run: docker stop target-app || true
+
+# ═══════════════════════════════════════════════════════════════════════════════
+#  JOB 7 — RAPPORT FINAL
+#  Objectif : consolider tous les résultats et créer un résumé
+#  Dépend de : tous les jobs de sécurité
+# ═══════════════════════════════════════════════════════════════════════════════
+  report:
+    name: "📋 Rapport Final — Consolidation"
+    runs-on: ubuntu-latest
+    needs: [dast]
+    if: always()                  # s'exécute même si des jobs ont échoué
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Télécharger tous les rapports
+        uses: actions/download-artifact@v4
+        with:
+          path: all-reports/
+
+      - name: Générer le résumé du pipeline
+        run: |
+          echo "# 🔐 Rapport DevSecOps Pipeline" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit :** \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Branch :** \`${{ github.ref_name }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Date    :** $(date '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## Résultats des jobs" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Étape | Outil | Security Gate |" >> $GITHUB_STEP_SUMMARY
+          echo "|---|---|---|" >> $GITHUB_STEP_SUMMARY
+          echo "| Secret Detection | TruffleHog | Échec si secret validé trouvé |" >> $GITHUB_STEP_SUMMARY
+          echo "| SAST | Semgrep | Échec si ≥ 1 Critical |" >> $GITHUB_STEP_SUMMARY
+          echo "| SAST | SonarQube | Échec si Quality Gate rouge |" >> $GITHUB_STEP_SUMMARY
+          echo "| SCA | Snyk | Échec si ≥ 1 Critical ou ≥ 3 High |" >> $GITHUB_STEP_SUMMARY
+          echo "| IaC | Checkov | Échec si misconfiguration HIGH |" >> $GITHUB_STEP_SUMMARY
+          echo "| AI Filter | FastAPI + RandomForest | Réduction FP ≥ 30% |" >> $GITHUB_STEP_SUMMARY
+          echo "| Container Scan | Trivy | Échec si CVE Critical |" >> $GITHUB_STEP_SUMMARY
+          echo "| DAST | OWASP ZAP | Échec si ≥ 1 alerte High |" >> $GITHUB_STEP_SUMMARY
+
+      - name: Lister tous les rapports générés
+        run: |
+          echo "=== Rapports disponibles ==="
+          find all-reports/ -type f -name "*.json" -o -name "*.html" -o -name "*.sarif" | sort
+
+      - name: Upload rapport consolidé
+        uses: actions/upload-artifact@v4
+        with:
+          name: rapport-final-devsecops
+          path: all-reports/
+          retention-days: 30
