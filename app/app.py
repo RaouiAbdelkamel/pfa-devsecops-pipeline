@@ -38,7 +38,7 @@ def ping():
 @app.route("/secret")
 def secret():
     # Secret volontairement vulnérable pour démonstration
-    api_key = "AWS_SECRET_ACCESS_KEY_DEMO_123456789"
+    api_key = "demo_key_for_testing"   
     return {"api_key": api_key}
 
 if __name__ == "__main__":
