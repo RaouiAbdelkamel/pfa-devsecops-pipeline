@@ -1,0 +1,5062 @@
+[
+  {
+    "check_id": "custom.juice-shop.missing-auth-check",
+    "category": "auth",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 135,
+      "col": 35
+    },
+    "end": {
+      "line": 139,
+      "col": 12
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential auth vulnerability at line 135",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-330",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.flask.security.insecure-deserialization",
+    "category": "deserialization",
+    "path": "app/routes/user.py",
+    "start": {
+      "line": 129,
+      "col": 35
+    },
+    "end": {
+      "line": 138,
+      "col": 54
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential deserialization vulnerability at line 129",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-79",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.correctness.useless-eqeq",
+    "category": "correctness",
+    "path": "app/helpers/sanitize.py",
+    "start": {
+      "line": 13,
+      "col": 10
+    },
+    "end": {
+      "line": 16,
+      "col": 28
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential correctness vulnerability at line 13",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.flask.security.xss.audit.direct-use-of-jinja2",
+    "category": "xss",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 186,
+      "col": 30
+    },
+    "end": {
+      "line": 196,
+      "col": 69
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential xss vulnerability at line 186",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.flask.security.insecure-deserialization",
+    "category": "deserialization",
+    "path": "app/utils/crypto.py",
+    "start": {
+      "line": 195,
+      "col": 3
+    },
+    "end": {
+      "line": 205,
+      "col": 30
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential deserialization vulnerability at line 195",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.flask.security.xss.audit.direct-use-of-jinja2",
+    "category": "xss",
+    "path": "tests/test_auth.py",
+    "start": {
+      "line": 204,
+      "col": 24
+    },
+    "end": {
+      "line": 209,
+      "col": 21
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential xss vulnerability at line 204",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.audit.hardcoded-password",
+    "category": "secrets",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 46,
+      "col": 16
+    },
+    "end": {
+      "line": 56,
+      "col": 21
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential secrets vulnerability at line 46",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-327",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.flask.security.insecure-deserialization",
+    "category": "deserialization",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 295,
+      "col": 4
+    },
+    "end": {
+      "line": 299,
+      "col": 30
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential deserialization vulnerability at line 295",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.unsafe-redirect",
+    "category": "redirect",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 118,
+      "col": 32
+    },
+    "end": {
+      "line": 128,
+      "col": 51
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential redirect vulnerability at line 118",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.correctness.useless-eqeq",
+    "category": "correctness",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 297,
+      "col": 28
+    },
+    "end": {
+      "line": 306,
+      "col": 75
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential correctness vulnerability at line 297",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-327",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.audit.hardcoded-password",
+    "category": "secrets",
+    "path": "app/routes/admin.py",
+    "start": {
+      "line": 270,
+      "col": 8
+    },
+    "end": {
+      "line": 278,
+      "col": 20
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential secrets vulnerability at line 270",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.audit.sqli.sqlalchemy-execute-raw",
+    "category": "sqli",
+    "path": "app/helpers/sanitize.py",
+    "start": {
+      "line": 42,
+      "col": 30
+    },
+    "end": {
+      "line": 49,
+      "col": 68
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential sqli vulnerability at line 42",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-89",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.exec-detected",
+    "category": "injection",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 68,
+      "col": 22
+    },
+    "end": {
+      "line": 77,
+      "col": 15
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential injection vulnerability at line 68",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.flask.security.insecure-deserialization",
+    "category": "deserialization",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 144,
+      "col": 7
+    },
+    "end": {
+      "line": 153,
+      "col": 39
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential deserialization vulnerability at line 144",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.exec-detected",
+    "category": "injection",
+    "path": "app/routes/user.py",
+    "start": {
+      "line": 92,
+      "col": 32
+    },
+    "end": {
+      "line": 101,
+      "col": 3
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential injection vulnerability at line 92",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.hardcoded-password",
+    "category": "secrets",
+    "path": "app/routes/user.py",
+    "start": {
+      "line": 167,
+      "col": 37
+    },
+    "end": {
+      "line": 171,
+      "col": 11
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential secrets vulnerability at line 167",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.exposed-admin-route",
+    "category": "auth",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 282,
+      "col": 36
+    },
+    "end": {
+      "line": 285,
+      "col": 22
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential auth vulnerability at line 282",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.exec-detected",
+    "category": "injection",
+    "path": "app/utils/crypto.py",
+    "start": {
+      "line": 118,
+      "col": 26
+    },
+    "end": {
+      "line": 127,
+      "col": 48
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential injection vulnerability at line 118",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-327",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.audit.exec-detected",
+    "category": "injection",
+    "path": "app/routes/user.py",
+    "start": {
+      "line": 42,
+      "col": 15
+    },
+    "end": {
+      "line": 48,
+      "col": 76
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential injection vulnerability at line 42",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-79",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.dangerous-subprocess-use",
+    "category": "injection",
+    "path": "app/routes/user.py",
+    "start": {
+      "line": 127,
+      "col": 5
+    },
+    "end": {
+      "line": 129,
+      "col": 66
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential injection vulnerability at line 127",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-79",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.insecure-hash-algorithms.sha1",
+    "category": "crypto",
+    "path": "tests/test_auth.py",
+    "start": {
+      "line": 77,
+      "col": 31
+    },
+    "end": {
+      "line": 87,
+      "col": 53
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential crypto vulnerability at line 77",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-79",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.flask.security.xss.audit.direct-use-of-jinja2",
+    "category": "xss",
+    "path": "tests/test_auth.py",
+    "start": {
+      "line": 226,
+      "col": 4
+    },
+    "end": {
+      "line": 233,
+      "col": 13
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential xss vulnerability at line 226",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.flask.security.insecure-deserialization",
+    "category": "deserialization",
+    "path": "app/utils/crypto.py",
+    "start": {
+      "line": 65,
+      "col": 29
+    },
+    "end": {
+      "line": 69,
+      "col": 18
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential deserialization vulnerability at line 65",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-327",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.sqli.sqlalchemy-execute-raw",
+    "category": "sqli",
+    "path": "app/routes/admin.py",
+    "start": {
+      "line": 48,
+      "col": 35
+    },
+    "end": {
+      "line": 56,
+      "col": 2
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential sqli vulnerability at line 48",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-78",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.unsafe-redirect",
+    "category": "redirect",
+    "path": "app/utils/crypto.py",
+    "start": {
+      "line": 258,
+      "col": 4
+    },
+    "end": {
+      "line": 266,
+      "col": 22
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential redirect vulnerability at line 258",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-327",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.audit.dangerous-subprocess-use",
+    "category": "injection",
+    "path": "app/helpers/sanitize.py",
+    "start": {
+      "line": 242,
+      "col": 36
+    },
+    "end": {
+      "line": 247,
+      "col": 63
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential injection vulnerability at line 242",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-79",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.insecure-hash-algorithms.md5",
+    "category": "crypto",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 287,
+      "col": 38
+    },
+    "end": {
+      "line": 288,
+      "col": 62
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential crypto vulnerability at line 287",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-330",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.exec-detected",
+    "category": "injection",
+    "path": "app/routes/admin.py",
+    "start": {
+      "line": 51,
+      "col": 16
+    },
+    "end": {
+      "line": 54,
+      "col": 52
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential injection vulnerability at line 51",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.formatted-sql-query",
+    "category": "sqli",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 51,
+      "col": 14
+    },
+    "end": {
+      "line": 58,
+      "col": 41
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential sqli vulnerability at line 51",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-79",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.insecure-hash-algorithms.sha1",
+    "category": "crypto",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 163,
+      "col": 5
+    },
+    "end": {
+      "line": 171,
+      "col": 2
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential crypto vulnerability at line 163",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-327",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.audit.formatted-sql-query",
+    "category": "sqli",
+    "path": "app/utils/crypto.py",
+    "start": {
+      "line": 47,
+      "col": 9
+    },
+    "end": {
+      "line": 56,
+      "col": 45
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential sqli vulnerability at line 47",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-78",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.insecure-hash-algorithms.md5",
+    "category": "crypto",
+    "path": "app/routes/user.py",
+    "start": {
+      "line": 288,
+      "col": 36
+    },
+    "end": {
+      "line": 293,
+      "col": 39
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential crypto vulnerability at line 288",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.flask.security.xss.audit.direct-use-of-jinja2",
+    "category": "xss",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 69,
+      "col": 39
+    },
+    "end": {
+      "line": 71,
+      "col": 27
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential xss vulnerability at line 69",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.hardcoded-password",
+    "category": "secrets",
+    "path": "tests/test_auth.py",
+    "start": {
+      "line": 145,
+      "col": 4
+    },
+    "end": {
+      "line": 154,
+      "col": 12
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential secrets vulnerability at line 145",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.flask.security.insecure-deserialization",
+    "category": "deserialization",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 180,
+      "col": 29
+    },
+    "end": {
+      "line": 183,
+      "col": 71
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential deserialization vulnerability at line 180",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.flask.security.insecure-deserialization",
+    "category": "deserialization",
+    "path": "app/routes/user.py",
+    "start": {
+      "line": 86,
+      "col": 38
+    },
+    "end": {
+      "line": 95,
+      "col": 71
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential deserialization vulnerability at line 86",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-79",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.flask.security.insecure-deserialization",
+    "category": "deserialization",
+    "path": "app/utils/crypto.py",
+    "start": {
+      "line": 30,
+      "col": 7
+    },
+    "end": {
+      "line": 36,
+      "col": 46
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential deserialization vulnerability at line 30",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-330",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.flask.security.insecure-deserialization",
+    "category": "deserialization",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 131,
+      "col": 2
+    },
+    "end": {
+      "line": 134,
+      "col": 23
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential deserialization vulnerability at line 131",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.audit.hardcoded-password",
+    "category": "secrets",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 137,
+      "col": 7
+    },
+    "end": {
+      "line": 142,
+      "col": 49
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential secrets vulnerability at line 137",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.correctness.useless-eqeq",
+    "category": "correctness",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 245,
+      "col": 15
+    },
+    "end": {
+      "line": 251,
+      "col": 29
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential correctness vulnerability at line 245",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "custom.juice-shop.missing-auth-check",
+    "category": "auth",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 45,
+      "col": 26
+    },
+    "end": {
+      "line": 50,
+      "col": 69
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential auth vulnerability at line 45",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.dangerous-subprocess-use",
+    "category": "injection",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 101,
+      "col": 39
+    },
+    "end": {
+      "line": 111,
+      "col": 56
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential injection vulnerability at line 101",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.exposed-admin-route",
+    "category": "auth",
+    "path": "app/helpers/sanitize.py",
+    "start": {
+      "line": 271,
+      "col": 13
+    },
+    "end": {
+      "line": 273,
+      "col": 33
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential auth vulnerability at line 271",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.exposed-admin-route",
+    "category": "auth",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 285,
+      "col": 22
+    },
+    "end": {
+      "line": 289,
+      "col": 80
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential auth vulnerability at line 285",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.missing-auth-check",
+    "category": "auth",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 163,
+      "col": 21
+    },
+    "end": {
+      "line": 172,
+      "col": 52
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential auth vulnerability at line 163",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.insecure-hash-algorithms.sha1",
+    "category": "crypto",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 204,
+      "col": 1
+    },
+    "end": {
+      "line": 207,
+      "col": 39
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential crypto vulnerability at line 204",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.insecure-hash-algorithms.md5",
+    "category": "crypto",
+    "path": "tests/test_auth.py",
+    "start": {
+      "line": 174,
+      "col": 14
+    },
+    "end": {
+      "line": 182,
+      "col": 66
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential crypto vulnerability at line 174",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-327",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "custom.juice-shop.unsafe-redirect",
+    "category": "redirect",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 96,
+      "col": 40
+    },
+    "end": {
+      "line": 98,
+      "col": 43
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential redirect vulnerability at line 96",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.unsafe-redirect",
+    "category": "redirect",
+    "path": "app/routes/user.py",
+    "start": {
+      "line": 111,
+      "col": 31
+    },
+    "end": {
+      "line": 114,
+      "col": 79
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential redirect vulnerability at line 111",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.correctness.useless-eqeq",
+    "category": "correctness",
+    "path": "tests/test_auth.py",
+    "start": {
+      "line": 109,
+      "col": 10
+    },
+    "end": {
+      "line": 116,
+      "col": 1
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential correctness vulnerability at line 109",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "custom.juice-shop.unsafe-redirect",
+    "category": "redirect",
+    "path": "app/routes/user.py",
+    "start": {
+      "line": 275,
+      "col": 8
+    },
+    "end": {
+      "line": 283,
+      "col": 59
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential redirect vulnerability at line 275",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-79",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.unsafe-redirect",
+    "category": "redirect",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 296,
+      "col": 29
+    },
+    "end": {
+      "line": 306,
+      "col": 79
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential redirect vulnerability at line 296",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.audit.exec-detected",
+    "category": "injection",
+    "path": "tests/test_auth.py",
+    "start": {
+      "line": 238,
+      "col": 16
+    },
+    "end": {
+      "line": 241,
+      "col": 36
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential injection vulnerability at line 238",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-330",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.correctness.useless-eqeq",
+    "category": "correctness",
+    "path": "app/utils/crypto.py",
+    "start": {
+      "line": 49,
+      "col": 21
+    },
+    "end": {
+      "line": 54,
+      "col": 70
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential correctness vulnerability at line 49",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.audit.sqli.sqlalchemy-execute-raw",
+    "category": "sqli",
+    "path": "app/routes/admin.py",
+    "start": {
+      "line": 88,
+      "col": 22
+    },
+    "end": {
+      "line": 92,
+      "col": 70
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential sqli vulnerability at line 88",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-327",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.flask.security.insecure-deserialization",
+    "category": "deserialization",
+    "path": "app/routes/user.py",
+    "start": {
+      "line": 209,
+      "col": 37
+    },
+    "end": {
+      "line": 219,
+      "col": 49
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential deserialization vulnerability at line 209",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-327",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.dangerous-subprocess-use",
+    "category": "injection",
+    "path": "app/utils/crypto.py",
+    "start": {
+      "line": 209,
+      "col": 18
+    },
+    "end": {
+      "line": 216,
+      "col": 56
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential injection vulnerability at line 209",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-327",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.dangerous-subprocess-use",
+    "category": "injection",
+    "path": "tests/test_auth.py",
+    "start": {
+      "line": 217,
+      "col": 40
+    },
+    "end": {
+      "line": 220,
+      "col": 69
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential injection vulnerability at line 217",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.flask.security.insecure-deserialization",
+    "category": "deserialization",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 52,
+      "col": 12
+    },
+    "end": {
+      "line": 59,
+      "col": 7
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential deserialization vulnerability at line 52",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.flask.security.insecure-deserialization",
+    "category": "deserialization",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 182,
+      "col": 27
+    },
+    "end": {
+      "line": 189,
+      "col": 33
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential deserialization vulnerability at line 182",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.correctness.useless-eqeq",
+    "category": "correctness",
+    "path": "app/routes/admin.py",
+    "start": {
+      "line": 189,
+      "col": 3
+    },
+    "end": {
+      "line": 193,
+      "col": 4
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential correctness vulnerability at line 189",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-79",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.insecure-hash-algorithms.md5",
+    "category": "crypto",
+    "path": "tests/test_auth.py",
+    "start": {
+      "line": 132,
+      "col": 37
+    },
+    "end": {
+      "line": 135,
+      "col": 28
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential crypto vulnerability at line 132",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-327",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "custom.juice-shop.exposed-admin-route",
+    "category": "auth",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 68,
+      "col": 2
+    },
+    "end": {
+      "line": 71,
+      "col": 40
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential auth vulnerability at line 68",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-330",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.missing-auth-check",
+    "category": "auth",
+    "path": "app/utils/crypto.py",
+    "start": {
+      "line": 111,
+      "col": 20
+    },
+    "end": {
+      "line": 113,
+      "col": 77
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential auth vulnerability at line 111",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.unsafe-redirect",
+    "category": "redirect",
+    "path": "app/helpers/sanitize.py",
+    "start": {
+      "line": 187,
+      "col": 5
+    },
+    "end": {
+      "line": 196,
+      "col": 65
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential redirect vulnerability at line 187",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.audit.hardcoded-password",
+    "category": "secrets",
+    "path": "app/helpers/sanitize.py",
+    "start": {
+      "line": 260,
+      "col": 30
+    },
+    "end": {
+      "line": 262,
+      "col": 20
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential secrets vulnerability at line 260",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-327",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.audit.sqli.sqlalchemy-execute-raw",
+    "category": "sqli",
+    "path": "tests/test_auth.py",
+    "start": {
+      "line": 148,
+      "col": 38
+    },
+    "end": {
+      "line": 158,
+      "col": 35
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential sqli vulnerability at line 148",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-89",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.insecure-hash-algorithms.md5",
+    "category": "crypto",
+    "path": "tests/test_auth.py",
+    "start": {
+      "line": 240,
+      "col": 25
+    },
+    "end": {
+      "line": 244,
+      "col": 44
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential crypto vulnerability at line 240",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.correctness.useless-eqeq",
+    "category": "correctness",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 118,
+      "col": 39
+    },
+    "end": {
+      "line": 124,
+      "col": 36
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential correctness vulnerability at line 118",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-330",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.audit.dangerous-subprocess-use",
+    "category": "injection",
+    "path": "tests/test_auth.py",
+    "start": {
+      "line": 133,
+      "col": 16
+    },
+    "end": {
+      "line": 140,
+      "col": 61
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential injection vulnerability at line 133",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.exposed-admin-route",
+    "category": "auth",
+    "path": "app/utils/crypto.py",
+    "start": {
+      "line": 57,
+      "col": 16
+    },
+    "end": {
+      "line": 62,
+      "col": 40
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential auth vulnerability at line 57",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.formatted-sql-query",
+    "category": "sqli",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 186,
+      "col": 30
+    },
+    "end": {
+      "line": 193,
+      "col": 35
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential sqli vulnerability at line 186",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-89",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.insecure-hash-algorithms.sha1",
+    "category": "crypto",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 171,
+      "col": 31
+    },
+    "end": {
+      "line": 173,
+      "col": 36
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential crypto vulnerability at line 171",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.formatted-sql-query",
+    "category": "sqli",
+    "path": "app/utils/crypto.py",
+    "start": {
+      "line": 154,
+      "col": 24
+    },
+    "end": {
+      "line": 156,
+      "col": 23
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential sqli vulnerability at line 154",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-89",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.dangerous-subprocess-use",
+    "category": "injection",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 33,
+      "col": 9
+    },
+    "end": {
+      "line": 34,
+      "col": 63
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential injection vulnerability at line 33",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.dangerous-subprocess-use",
+    "category": "injection",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 235,
+      "col": 17
+    },
+    "end": {
+      "line": 241,
+      "col": 62
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential injection vulnerability at line 235",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.flask.security.xss.audit.direct-use-of-jinja2",
+    "category": "xss",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 37,
+      "col": 20
+    },
+    "end": {
+      "line": 40,
+      "col": 11
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential xss vulnerability at line 37",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-79",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.flask.security.xss.audit.direct-use-of-jinja2",
+    "category": "xss",
+    "path": "app/helpers/sanitize.py",
+    "start": {
+      "line": 125,
+      "col": 29
+    },
+    "end": {
+      "line": 134,
+      "col": 39
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential xss vulnerability at line 125",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-330",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.flask.security.insecure-deserialization",
+    "category": "deserialization",
+    "path": "app/utils/crypto.py",
+    "start": {
+      "line": 60,
+      "col": 6
+    },
+    "end": {
+      "line": 64,
+      "col": 21
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential deserialization vulnerability at line 60",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-79",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.sqli.sqlalchemy-execute-raw",
+    "category": "sqli",
+    "path": "tests/test_auth.py",
+    "start": {
+      "line": 219,
+      "col": 15
+    },
+    "end": {
+      "line": 227,
+      "col": 37
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential sqli vulnerability at line 219",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-601",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.insecure-hash-algorithms.sha1",
+    "category": "crypto",
+    "path": "app/utils/crypto.py",
+    "start": {
+      "line": 129,
+      "col": 35
+    },
+    "end": {
+      "line": 134,
+      "col": 29
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential crypto vulnerability at line 129",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.sqli.sqlalchemy-execute-raw",
+    "category": "sqli",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 46,
+      "col": 39
+    },
+    "end": {
+      "line": 47,
+      "col": 73
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential sqli vulnerability at line 46",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-89",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.correctness.useless-eqeq",
+    "category": "correctness",
+    "path": "tests/test_auth.py",
+    "start": {
+      "line": 216,
+      "col": 39
+    },
+    "end": {
+      "line": 221,
+      "col": 6
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential correctness vulnerability at line 216",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-327",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "custom.juice-shop.exposed-admin-route",
+    "category": "auth",
+    "path": "app/routes/user.py",
+    "start": {
+      "line": 56,
+      "col": 18
+    },
+    "end": {
+      "line": 60,
+      "col": 74
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential auth vulnerability at line 56",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "custom.juice-shop.unsafe-redirect",
+    "category": "redirect",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 236,
+      "col": 28
+    },
+    "end": {
+      "line": 241,
+      "col": 63
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential redirect vulnerability at line 236",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.correctness.useless-eqeq",
+    "category": "correctness",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 63,
+      "col": 32
+    },
+    "end": {
+      "line": 66,
+      "col": 37
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential correctness vulnerability at line 63",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.flask.security.insecure-deserialization",
+    "category": "deserialization",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 242,
+      "col": 8
+    },
+    "end": {
+      "line": 244,
+      "col": 52
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential deserialization vulnerability at line 242",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-330",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.dangerous-subprocess-use",
+    "category": "injection",
+    "path": "app/utils/crypto.py",
+    "start": {
+      "line": 221,
+      "col": 40
+    },
+    "end": {
+      "line": 222,
+      "col": 64
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential injection vulnerability at line 221",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.correctness.useless-eqeq",
+    "category": "correctness",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 291,
+      "col": 32
+    },
+    "end": {
+      "line": 294,
+      "col": 16
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential correctness vulnerability at line 291",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "custom.juice-shop.missing-auth-check",
+    "category": "auth",
+    "path": "app/routes/user.py",
+    "start": {
+      "line": 91,
+      "col": 6
+    },
+    "end": {
+      "line": 96,
+      "col": 29
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential auth vulnerability at line 91",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.correctness.useless-eqeq",
+    "category": "correctness",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 88,
+      "col": 18
+    },
+    "end": {
+      "line": 96,
+      "col": 54
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential correctness vulnerability at line 88",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-327",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.correctness.useless-eqeq",
+    "category": "correctness",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 206,
+      "col": 18
+    },
+    "end": {
+      "line": 210,
+      "col": 54
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential correctness vulnerability at line 206",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "custom.juice-shop.unsafe-redirect",
+    "category": "redirect",
+    "path": "tests/test_auth.py",
+    "start": {
+      "line": 154,
+      "col": 29
+    },
+    "end": {
+      "line": 159,
+      "col": 69
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential redirect vulnerability at line 154",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-327",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.audit.hardcoded-password",
+    "category": "secrets",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 203,
+      "col": 16
+    },
+    "end": {
+      "line": 211,
+      "col": 74
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential secrets vulnerability at line 203",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-327",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.insecure-hash-algorithms.md5",
+    "category": "crypto",
+    "path": "app/helpers/sanitize.py",
+    "start": {
+      "line": 172,
+      "col": 10
+    },
+    "end": {
+      "line": 180,
+      "col": 64
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential crypto vulnerability at line 172",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.audit.sqli.sqlalchemy-execute-raw",
+    "category": "sqli",
+    "path": "app/routes/admin.py",
+    "start": {
+      "line": 61,
+      "col": 30
+    },
+    "end": {
+      "line": 69,
+      "col": 2
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential sqli vulnerability at line 61",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-601",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.sqli.sqlalchemy-execute-raw",
+    "category": "sqli",
+    "path": "tests/test_auth.py",
+    "start": {
+      "line": 89,
+      "col": 17
+    },
+    "end": {
+      "line": 91,
+      "col": 44
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential sqli vulnerability at line 89",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-330",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "custom.juice-shop.exposed-admin-route",
+    "category": "auth",
+    "path": "app/helpers/sanitize.py",
+    "start": {
+      "line": 178,
+      "col": 32
+    },
+    "end": {
+      "line": 187,
+      "col": 70
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential auth vulnerability at line 178",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.formatted-sql-query",
+    "category": "sqli",
+    "path": "app/routes/admin.py",
+    "start": {
+      "line": 157,
+      "col": 7
+    },
+    "end": {
+      "line": 161,
+      "col": 13
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential sqli vulnerability at line 157",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-327",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.sqli.sqlalchemy-execute-raw",
+    "category": "sqli",
+    "path": "app/routes/user.py",
+    "start": {
+      "line": 33,
+      "col": 24
+    },
+    "end": {
+      "line": 39,
+      "col": 56
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential sqli vulnerability at line 33",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-79",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.insecure-hash-algorithms.md5",
+    "category": "crypto",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 102,
+      "col": 25
+    },
+    "end": {
+      "line": 105,
+      "col": 80
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential crypto vulnerability at line 102",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.insecure-hash-algorithms.md5",
+    "category": "crypto",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 128,
+      "col": 1
+    },
+    "end": {
+      "line": 136,
+      "col": 60
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential crypto vulnerability at line 128",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "custom.juice-shop.missing-auth-check",
+    "category": "auth",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 186,
+      "col": 28
+    },
+    "end": {
+      "line": 196,
+      "col": 33
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential auth vulnerability at line 186",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-327",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.insecure-hash-algorithms.sha1",
+    "category": "crypto",
+    "path": "app/utils/crypto.py",
+    "start": {
+      "line": 257,
+      "col": 23
+    },
+    "end": {
+      "line": 259,
+      "col": 74
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential crypto vulnerability at line 257",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.exposed-admin-route",
+    "category": "auth",
+    "path": "app/routes/user.py",
+    "start": {
+      "line": 212,
+      "col": 4
+    },
+    "end": {
+      "line": 217,
+      "col": 78
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential auth vulnerability at line 212",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.correctness.useless-eqeq",
+    "category": "correctness",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 127,
+      "col": 13
+    },
+    "end": {
+      "line": 137,
+      "col": 80
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential correctness vulnerability at line 127",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "custom.juice-shop.missing-auth-check",
+    "category": "auth",
+    "path": "app/routes/user.py",
+    "start": {
+      "line": 80,
+      "col": 29
+    },
+    "end": {
+      "line": 82,
+      "col": 5
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential auth vulnerability at line 80",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-330",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.hardcoded-password",
+    "category": "secrets",
+    "path": "app/helpers/sanitize.py",
+    "start": {
+      "line": 161,
+      "col": 9
+    },
+    "end": {
+      "line": 167,
+      "col": 70
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential secrets vulnerability at line 161",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.exec-detected",
+    "category": "injection",
+    "path": "tests/test_auth.py",
+    "start": {
+      "line": 94,
+      "col": 19
+    },
+    "end": {
+      "line": 99,
+      "col": 44
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential injection vulnerability at line 94",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.correctness.useless-eqeq",
+    "category": "correctness",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 125,
+      "col": 26
+    },
+    "end": {
+      "line": 132,
+      "col": 2
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential correctness vulnerability at line 125",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.audit.exec-detected",
+    "category": "injection",
+    "path": "app/helpers/sanitize.py",
+    "start": {
+      "line": 144,
+      "col": 24
+    },
+    "end": {
+      "line": 154,
+      "col": 14
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential injection vulnerability at line 144",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.insecure-hash-algorithms.md5",
+    "category": "crypto",
+    "path": "app/utils/crypto.py",
+    "start": {
+      "line": 297,
+      "col": 30
+    },
+    "end": {
+      "line": 303,
+      "col": 39
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential crypto vulnerability at line 297",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.flask.security.insecure-deserialization",
+    "category": "deserialization",
+    "path": "tests/test_auth.py",
+    "start": {
+      "line": 29,
+      "col": 16
+    },
+    "end": {
+      "line": 34,
+      "col": 69
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential deserialization vulnerability at line 29",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-79",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.flask.security.insecure-deserialization",
+    "category": "deserialization",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 286,
+      "col": 7
+    },
+    "end": {
+      "line": 293,
+      "col": 63
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential deserialization vulnerability at line 286",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-330",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.flask.security.insecure-deserialization",
+    "category": "deserialization",
+    "path": "tests/test_auth.py",
+    "start": {
+      "line": 199,
+      "col": 16
+    },
+    "end": {
+      "line": 203,
+      "col": 47
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential deserialization vulnerability at line 199",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.missing-auth-check",
+    "category": "auth",
+    "path": "app/helpers/sanitize.py",
+    "start": {
+      "line": 193,
+      "col": 8
+    },
+    "end": {
+      "line": 194,
+      "col": 59
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential auth vulnerability at line 193",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.missing-auth-check",
+    "category": "auth",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 20,
+      "col": 9
+    },
+    "end": {
+      "line": 21,
+      "col": 73
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential auth vulnerability at line 20",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-79",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.flask.security.xss.audit.direct-use-of-jinja2",
+    "category": "xss",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 120,
+      "col": 39
+    },
+    "end": {
+      "line": 124,
+      "col": 1
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential xss vulnerability at line 120",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.audit.sqli.sqlalchemy-execute-raw",
+    "category": "sqli",
+    "path": "app/routes/user.py",
+    "start": {
+      "line": 99,
+      "col": 23
+    },
+    "end": {
+      "line": 101,
+      "col": 31
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential sqli vulnerability at line 99",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-330",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.hardcoded-password",
+    "category": "secrets",
+    "path": "app/routes/admin.py",
+    "start": {
+      "line": 74,
+      "col": 31
+    },
+    "end": {
+      "line": 81,
+      "col": 58
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential secrets vulnerability at line 74",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.exec-detected",
+    "category": "injection",
+    "path": "app/routes/user.py",
+    "start": {
+      "line": 123,
+      "col": 34
+    },
+    "end": {
+      "line": 133,
+      "col": 39
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential injection vulnerability at line 123",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-327",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.missing-auth-check",
+    "category": "auth",
+    "path": "app/helpers/sanitize.py",
+    "start": {
+      "line": 255,
+      "col": 32
+    },
+    "end": {
+      "line": 262,
+      "col": 57
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential auth vulnerability at line 255",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.flask.security.xss.audit.direct-use-of-jinja2",
+    "category": "xss",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 74,
+      "col": 39
+    },
+    "end": {
+      "line": 79,
+      "col": 68
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential xss vulnerability at line 74",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.correctness.useless-eqeq",
+    "category": "correctness",
+    "path": "app/utils/crypto.py",
+    "start": {
+      "line": 68,
+      "col": 15
+    },
+    "end": {
+      "line": 77,
+      "col": 53
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential correctness vulnerability at line 68",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.correctness.useless-eqeq",
+    "category": "correctness",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 170,
+      "col": 24
+    },
+    "end": {
+      "line": 177,
+      "col": 20
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential correctness vulnerability at line 170",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.correctness.useless-eqeq",
+    "category": "correctness",
+    "path": "app/routes/admin.py",
+    "start": {
+      "line": 57,
+      "col": 24
+    },
+    "end": {
+      "line": 64,
+      "col": 17
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential correctness vulnerability at line 57",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-330",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.audit.dangerous-subprocess-use",
+    "category": "injection",
+    "path": "app/helpers/sanitize.py",
+    "start": {
+      "line": 178,
+      "col": 28
+    },
+    "end": {
+      "line": 180,
+      "col": 7
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential injection vulnerability at line 178",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.formatted-sql-query",
+    "category": "sqli",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 269,
+      "col": 15
+    },
+    "end": {
+      "line": 273,
+      "col": 14
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential sqli vulnerability at line 269",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-89",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.exec-detected",
+    "category": "injection",
+    "path": "app/routes/user.py",
+    "start": {
+      "line": 125,
+      "col": 18
+    },
+    "end": {
+      "line": 132,
+      "col": 4
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential injection vulnerability at line 125",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-79",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.insecure-hash-algorithms.sha1",
+    "category": "crypto",
+    "path": "app/routes/user.py",
+    "start": {
+      "line": 183,
+      "col": 10
+    },
+    "end": {
+      "line": 189,
+      "col": 73
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential crypto vulnerability at line 183",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.flask.security.insecure-deserialization",
+    "category": "deserialization",
+    "path": "app/utils/crypto.py",
+    "start": {
+      "line": 25,
+      "col": 30
+    },
+    "end": {
+      "line": 27,
+      "col": 44
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential deserialization vulnerability at line 25",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-79",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.hardcoded-password",
+    "category": "secrets",
+    "path": "app/routes/admin.py",
+    "start": {
+      "line": 300,
+      "col": 10
+    },
+    "end": {
+      "line": 310,
+      "col": 21
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential secrets vulnerability at line 300",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-330",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.audit.dangerous-subprocess-use",
+    "category": "injection",
+    "path": "tests/test_auth.py",
+    "start": {
+      "line": 227,
+      "col": 14
+    },
+    "end": {
+      "line": 235,
+      "col": 66
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential injection vulnerability at line 227",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.hardcoded-password",
+    "category": "secrets",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 259,
+      "col": 26
+    },
+    "end": {
+      "line": 268,
+      "col": 77
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential secrets vulnerability at line 259",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.dangerous-subprocess-use",
+    "category": "injection",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 80,
+      "col": 1
+    },
+    "end": {
+      "line": 85,
+      "col": 64
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential injection vulnerability at line 80",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.flask.security.insecure-deserialization",
+    "category": "deserialization",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 127,
+      "col": 3
+    },
+    "end": {
+      "line": 136,
+      "col": 56
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential deserialization vulnerability at line 127",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.correctness.useless-eqeq",
+    "category": "correctness",
+    "path": "app/helpers/sanitize.py",
+    "start": {
+      "line": 229,
+      "col": 27
+    },
+    "end": {
+      "line": 239,
+      "col": 38
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential correctness vulnerability at line 229",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.flask.security.insecure-deserialization",
+    "category": "deserialization",
+    "path": "app/routes/admin.py",
+    "start": {
+      "line": 245,
+      "col": 7
+    },
+    "end": {
+      "line": 251,
+      "col": 32
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential deserialization vulnerability at line 245",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-327",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.formatted-sql-query",
+    "category": "sqli",
+    "path": "app/utils/crypto.py",
+    "start": {
+      "line": 168,
+      "col": 11
+    },
+    "end": {
+      "line": 174,
+      "col": 10
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential sqli vulnerability at line 168",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-330",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.missing-auth-check",
+    "category": "auth",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 188,
+      "col": 10
+    },
+    "end": {
+      "line": 194,
+      "col": 33
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential auth vulnerability at line 188",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-79",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.sqli.sqlalchemy-execute-raw",
+    "category": "sqli",
+    "path": "tests/test_auth.py",
+    "start": {
+      "line": 48,
+      "col": 37
+    },
+    "end": {
+      "line": 51,
+      "col": 75
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential sqli vulnerability at line 48",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-327",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.missing-auth-check",
+    "category": "auth",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 175,
+      "col": 31
+    },
+    "end": {
+      "line": 181,
+      "col": 57
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential auth vulnerability at line 175",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.insecure-hash-algorithms.sha1",
+    "category": "crypto",
+    "path": "app/routes/admin.py",
+    "start": {
+      "line": 190,
+      "col": 29
+    },
+    "end": {
+      "line": 199,
+      "col": 5
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential crypto vulnerability at line 190",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.hardcoded-password",
+    "category": "secrets",
+    "path": "app/helpers/sanitize.py",
+    "start": {
+      "line": 56,
+      "col": 36
+    },
+    "end": {
+      "line": 66,
+      "col": 6
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential secrets vulnerability at line 56",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-327",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.unsafe-redirect",
+    "category": "redirect",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 253,
+      "col": 29
+    },
+    "end": {
+      "line": 262,
+      "col": 14
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential redirect vulnerability at line 253",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "custom.juice-shop.exposed-admin-route",
+    "category": "auth",
+    "path": "tests/test_auth.py",
+    "start": {
+      "line": 30,
+      "col": 34
+    },
+    "end": {
+      "line": 34,
+      "col": 67
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential auth vulnerability at line 30",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-330",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.audit.sqli.sqlalchemy-execute-raw",
+    "category": "sqli",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 208,
+      "col": 4
+    },
+    "end": {
+      "line": 215,
+      "col": 43
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential sqli vulnerability at line 208",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-78",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.hardcoded-password",
+    "category": "secrets",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 155,
+      "col": 38
+    },
+    "end": {
+      "line": 160,
+      "col": 19
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential secrets vulnerability at line 155",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.insecure-hash-algorithms.sha1",
+    "category": "crypto",
+    "path": "app/routes/admin.py",
+    "start": {
+      "line": 210,
+      "col": 25
+    },
+    "end": {
+      "line": 213,
+      "col": 43
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential crypto vulnerability at line 210",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-79",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "custom.juice-shop.missing-auth-check",
+    "category": "auth",
+    "path": "app/helpers/sanitize.py",
+    "start": {
+      "line": 279,
+      "col": 2
+    },
+    "end": {
+      "line": 281,
+      "col": 47
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential auth vulnerability at line 279",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.sqli.sqlalchemy-execute-raw",
+    "category": "sqli",
+    "path": "app/utils/crypto.py",
+    "start": {
+      "line": 258,
+      "col": 10
+    },
+    "end": {
+      "line": 262,
+      "col": 10
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential sqli vulnerability at line 258",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-89",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "custom.juice-shop.unsafe-redirect",
+    "category": "redirect",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 279,
+      "col": 40
+    },
+    "end": {
+      "line": 280,
+      "col": 17
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential redirect vulnerability at line 279",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-330",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.flask.security.insecure-deserialization",
+    "category": "deserialization",
+    "path": "app/routes/user.py",
+    "start": {
+      "line": 94,
+      "col": 16
+    },
+    "end": {
+      "line": 102,
+      "col": 57
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential deserialization vulnerability at line 94",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-330",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.insecure-hash-algorithms.sha1",
+    "category": "crypto",
+    "path": "app/utils/crypto.py",
+    "start": {
+      "line": 129,
+      "col": 31
+    },
+    "end": {
+      "line": 138,
+      "col": 25
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential crypto vulnerability at line 129",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.missing-auth-check",
+    "category": "auth",
+    "path": "app/helpers/sanitize.py",
+    "start": {
+      "line": 246,
+      "col": 27
+    },
+    "end": {
+      "line": 251,
+      "col": 21
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential auth vulnerability at line 246",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-79",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.unsafe-redirect",
+    "category": "redirect",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 36,
+      "col": 7
+    },
+    "end": {
+      "line": 44,
+      "col": 67
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential redirect vulnerability at line 36",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.insecure-hash-algorithms.sha1",
+    "category": "crypto",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 240,
+      "col": 6
+    },
+    "end": {
+      "line": 249,
+      "col": 29
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential crypto vulnerability at line 240",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-327",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.audit.hardcoded-password",
+    "category": "secrets",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 212,
+      "col": 6
+    },
+    "end": {
+      "line": 221,
+      "col": 48
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential secrets vulnerability at line 212",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-79",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.dangerous-subprocess-use",
+    "category": "injection",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 181,
+      "col": 31
+    },
+    "end": {
+      "line": 184,
+      "col": 18
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential injection vulnerability at line 181",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.correctness.useless-eqeq",
+    "category": "correctness",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 50,
+      "col": 10
+    },
+    "end": {
+      "line": 51,
+      "col": 71
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential correctness vulnerability at line 50",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.formatted-sql-query",
+    "category": "sqli",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 157,
+      "col": 16
+    },
+    "end": {
+      "line": 161,
+      "col": 54
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential sqli vulnerability at line 157",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-601",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.unsafe-redirect",
+    "category": "redirect",
+    "path": "app/routes/user.py",
+    "start": {
+      "line": 265,
+      "col": 37
+    },
+    "end": {
+      "line": 275,
+      "col": 31
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential redirect vulnerability at line 265",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.sqli.sqlalchemy-execute-raw",
+    "category": "sqli",
+    "path": "app/helpers/sanitize.py",
+    "start": {
+      "line": 190,
+      "col": 6
+    },
+    "end": {
+      "line": 194,
+      "col": 68
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential sqli vulnerability at line 190",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-89",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.flask.security.xss.audit.direct-use-of-jinja2",
+    "category": "xss",
+    "path": "app/routes/user.py",
+    "start": {
+      "line": 269,
+      "col": 31
+    },
+    "end": {
+      "line": 278,
+      "col": 6
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential xss vulnerability at line 269",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.flask.security.insecure-deserialization",
+    "category": "deserialization",
+    "path": "app/routes/admin.py",
+    "start": {
+      "line": 18,
+      "col": 7
+    },
+    "end": {
+      "line": 24,
+      "col": 75
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential deserialization vulnerability at line 18",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.unsafe-redirect",
+    "category": "redirect",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 289,
+      "col": 30
+    },
+    "end": {
+      "line": 295,
+      "col": 62
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential redirect vulnerability at line 289",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.sqli.sqlalchemy-execute-raw",
+    "category": "sqli",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 244,
+      "col": 13
+    },
+    "end": {
+      "line": 245,
+      "col": 6
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential sqli vulnerability at line 244",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-89",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.insecure-hash-algorithms.sha1",
+    "category": "crypto",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 288,
+      "col": 13
+    },
+    "end": {
+      "line": 296,
+      "col": 37
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential crypto vulnerability at line 288",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.unsafe-redirect",
+    "category": "redirect",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 149,
+      "col": 26
+    },
+    "end": {
+      "line": 151,
+      "col": 57
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential redirect vulnerability at line 149",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-327",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.hardcoded-password",
+    "category": "secrets",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 264,
+      "col": 28
+    },
+    "end": {
+      "line": 270,
+      "col": 11
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential secrets vulnerability at line 264",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-327",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.audit.formatted-sql-query",
+    "category": "sqli",
+    "path": "app/routes/admin.py",
+    "start": {
+      "line": 160,
+      "col": 19
+    },
+    "end": {
+      "line": 166,
+      "col": 40
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential sqli vulnerability at line 160",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-327",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.formatted-sql-query",
+    "category": "sqli",
+    "path": "tests/test_auth.py",
+    "start": {
+      "line": 237,
+      "col": 23
+    },
+    "end": {
+      "line": 243,
+      "col": 79
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential sqli vulnerability at line 237",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-327",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.insecure-hash-algorithms.sha1",
+    "category": "crypto",
+    "path": "app/helpers/sanitize.py",
+    "start": {
+      "line": 39,
+      "col": 11
+    },
+    "end": {
+      "line": 41,
+      "col": 4
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential crypto vulnerability at line 39",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-79",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.formatted-sql-query",
+    "category": "sqli",
+    "path": "app/utils/crypto.py",
+    "start": {
+      "line": 74,
+      "col": 24
+    },
+    "end": {
+      "line": 76,
+      "col": 47
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential sqli vulnerability at line 74",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-327",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.formatted-sql-query",
+    "category": "sqli",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 240,
+      "col": 5
+    },
+    "end": {
+      "line": 246,
+      "col": 74
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential sqli vulnerability at line 240",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-79",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.exec-detected",
+    "category": "injection",
+    "path": "app/routes/admin.py",
+    "start": {
+      "line": 152,
+      "col": 12
+    },
+    "end": {
+      "line": 156,
+      "col": 64
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential injection vulnerability at line 152",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-330",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.flask.security.insecure-deserialization",
+    "category": "deserialization",
+    "path": "app/utils/crypto.py",
+    "start": {
+      "line": 143,
+      "col": 19
+    },
+    "end": {
+      "line": 151,
+      "col": 63
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential deserialization vulnerability at line 143",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-79",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.flask.security.xss.audit.direct-use-of-jinja2",
+    "category": "xss",
+    "path": "app/routes/admin.py",
+    "start": {
+      "line": 98,
+      "col": 21
+    },
+    "end": {
+      "line": 106,
+      "col": 45
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential xss vulnerability at line 98",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.flask.security.xss.audit.direct-use-of-jinja2",
+    "category": "xss",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 163,
+      "col": 33
+    },
+    "end": {
+      "line": 166,
+      "col": 29
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential xss vulnerability at line 163",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.insecure-hash-algorithms.md5",
+    "category": "crypto",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 262,
+      "col": 24
+    },
+    "end": {
+      "line": 263,
+      "col": 60
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential crypto vulnerability at line 262",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-330",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.audit.sqli.sqlalchemy-execute-raw",
+    "category": "sqli",
+    "path": "tests/test_auth.py",
+    "start": {
+      "line": 168,
+      "col": 27
+    },
+    "end": {
+      "line": 175,
+      "col": 74
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential sqli vulnerability at line 168",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-78",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.sqli.sqlalchemy-execute-raw",
+    "category": "sqli",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 240,
+      "col": 36
+    },
+    "end": {
+      "line": 248,
+      "col": 76
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential sqli vulnerability at line 240",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-79",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.unsafe-redirect",
+    "category": "redirect",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 38,
+      "col": 11
+    },
+    "end": {
+      "line": 40,
+      "col": 42
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential redirect vulnerability at line 38",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.insecure-hash-algorithms.md5",
+    "category": "crypto",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 155,
+      "col": 36
+    },
+    "end": {
+      "line": 157,
+      "col": 36
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential crypto vulnerability at line 155",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-79",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.missing-auth-check",
+    "category": "auth",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 267,
+      "col": 40
+    },
+    "end": {
+      "line": 270,
+      "col": 78
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential auth vulnerability at line 267",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.formatted-sql-query",
+    "category": "sqli",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 51,
+      "col": 37
+    },
+    "end": {
+      "line": 52,
+      "col": 54
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential sqli vulnerability at line 51",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-330",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.missing-auth-check",
+    "category": "auth",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 289,
+      "col": 26
+    },
+    "end": {
+      "line": 294,
+      "col": 39
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential auth vulnerability at line 289",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-327",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.flask.security.xss.audit.direct-use-of-jinja2",
+    "category": "xss",
+    "path": "tests/test_auth.py",
+    "start": {
+      "line": 222,
+      "col": 39
+    },
+    "end": {
+      "line": 230,
+      "col": 19
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential xss vulnerability at line 222",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.exposed-admin-route",
+    "category": "auth",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 186,
+      "col": 33
+    },
+    "end": {
+      "line": 193,
+      "col": 72
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential auth vulnerability at line 186",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.hardcoded-password",
+    "category": "secrets",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 240,
+      "col": 19
+    },
+    "end": {
+      "line": 244,
+      "col": 50
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential secrets vulnerability at line 240",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-330",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.flask.security.insecure-deserialization",
+    "category": "deserialization",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 91,
+      "col": 11
+    },
+    "end": {
+      "line": 97,
+      "col": 64
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential deserialization vulnerability at line 91",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-330",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.correctness.useless-eqeq",
+    "category": "correctness",
+    "path": "app/helpers/sanitize.py",
+    "start": {
+      "line": 21,
+      "col": 16
+    },
+    "end": {
+      "line": 23,
+      "col": 28
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential correctness vulnerability at line 21",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-330",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.audit.hardcoded-password",
+    "category": "secrets",
+    "path": "app/routes/user.py",
+    "start": {
+      "line": 250,
+      "col": 28
+    },
+    "end": {
+      "line": 255,
+      "col": 18
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential secrets vulnerability at line 250",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.exposed-admin-route",
+    "category": "auth",
+    "path": "app/routes/user.py",
+    "start": {
+      "line": 33,
+      "col": 13
+    },
+    "end": {
+      "line": 40,
+      "col": 47
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential auth vulnerability at line 33",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-330",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.insecure-hash-algorithms.sha1",
+    "category": "crypto",
+    "path": "app/routes/admin.py",
+    "start": {
+      "line": 291,
+      "col": 7
+    },
+    "end": {
+      "line": 296,
+      "col": 51
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential crypto vulnerability at line 291",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.unsafe-redirect",
+    "category": "redirect",
+    "path": "app/utils/crypto.py",
+    "start": {
+      "line": 197,
+      "col": 26
+    },
+    "end": {
+      "line": 200,
+      "col": 65
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential redirect vulnerability at line 197",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.audit.dangerous-subprocess-use",
+    "category": "injection",
+    "path": "tests/test_auth.py",
+    "start": {
+      "line": 252,
+      "col": 33
+    },
+    "end": {
+      "line": 261,
+      "col": 18
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential injection vulnerability at line 252",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.formatted-sql-query",
+    "category": "sqli",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 163,
+      "col": 33
+    },
+    "end": {
+      "line": 173,
+      "col": 69
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential sqli vulnerability at line 163",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-327",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.exposed-admin-route",
+    "category": "auth",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 18,
+      "col": 27
+    },
+    "end": {
+      "line": 24,
+      "col": 75
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential auth vulnerability at line 18",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.unsafe-redirect",
+    "category": "redirect",
+    "path": "tests/test_auth.py",
+    "start": {
+      "line": 23,
+      "col": 38
+    },
+    "end": {
+      "line": 33,
+      "col": 74
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential redirect vulnerability at line 23",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-79",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "custom.juice-shop.exposed-admin-route",
+    "category": "auth",
+    "path": "app/helpers/sanitize.py",
+    "start": {
+      "line": 278,
+      "col": 16
+    },
+    "end": {
+      "line": 288,
+      "col": 5
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential auth vulnerability at line 278",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-330",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.exposed-admin-route",
+    "category": "auth",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 170,
+      "col": 14
+    },
+    "end": {
+      "line": 177,
+      "col": 53
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential auth vulnerability at line 170",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-330",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.unsafe-redirect",
+    "category": "redirect",
+    "path": "app/utils/crypto.py",
+    "start": {
+      "line": 41,
+      "col": 31
+    },
+    "end": {
+      "line": 44,
+      "col": 68
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential redirect vulnerability at line 41",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-327",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.hardcoded-password",
+    "category": "secrets",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 282,
+      "col": 17
+    },
+    "end": {
+      "line": 288,
+      "col": 79
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential secrets vulnerability at line 282",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-327",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.insecure-hash-algorithms.md5",
+    "category": "crypto",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 162,
+      "col": 14
+    },
+    "end": {
+      "line": 166,
+      "col": 63
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential crypto vulnerability at line 162",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.correctness.useless-eqeq",
+    "category": "correctness",
+    "path": "app/routes/admin.py",
+    "start": {
+      "line": 150,
+      "col": 35
+    },
+    "end": {
+      "line": 155,
+      "col": 49
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential correctness vulnerability at line 150",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-327",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.audit.hardcoded-password",
+    "category": "secrets",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 158,
+      "col": 6
+    },
+    "end": {
+      "line": 159,
+      "col": 45
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential secrets vulnerability at line 158",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-327",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "custom.juice-shop.missing-auth-check",
+    "category": "auth",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 113,
+      "col": 18
+    },
+    "end": {
+      "line": 122,
+      "col": 18
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential auth vulnerability at line 113",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-78",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.formatted-sql-query",
+    "category": "sqli",
+    "path": "app/utils/crypto.py",
+    "start": {
+      "line": 35,
+      "col": 4
+    },
+    "end": {
+      "line": 44,
+      "col": 13
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential sqli vulnerability at line 35",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-327",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.audit.hardcoded-password",
+    "category": "secrets",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 80,
+      "col": 31
+    },
+    "end": {
+      "line": 81,
+      "col": 62
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential secrets vulnerability at line 80",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.insecure-hash-algorithms.md5",
+    "category": "crypto",
+    "path": "app/routes/admin.py",
+    "start": {
+      "line": 156,
+      "col": 15
+    },
+    "end": {
+      "line": 157,
+      "col": 69
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential crypto vulnerability at line 156",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "custom.juice-shop.exposed-admin-route",
+    "category": "auth",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 99,
+      "col": 3
+    },
+    "end": {
+      "line": 106,
+      "col": 51
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential auth vulnerability at line 99",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-327",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.audit.sqli.sqlalchemy-execute-raw",
+    "category": "sqli",
+    "path": "app/routes/user.py",
+    "start": {
+      "line": 158,
+      "col": 39
+    },
+    "end": {
+      "line": 159,
+      "col": 14
+    },
+    "extra": {
+      "severity": "INFO",
+      "message": "Potential sqli vulnerability at line 158",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-89",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.security.insecure-hash-algorithms.sha1",
+    "category": "crypto",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 278,
+      "col": 30
+    },
+    "end": {
+      "line": 286,
+      "col": 35
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential crypto vulnerability at line 278",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-79",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "custom.juice-shop.unsafe-redirect",
+    "category": "redirect",
+    "path": "app/models/db.py",
+    "start": {
+      "line": 244,
+      "col": 22
+    },
+    "end": {
+      "line": 249,
+      "col": 38
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential redirect vulnerability at line 244",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-330",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "custom.juice-shop.missing-auth-check",
+    "category": "auth",
+    "path": "app/services/payment.py",
+    "start": {
+      "line": 217,
+      "col": 7
+    },
+    "end": {
+      "line": 224,
+      "col": 24
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential auth vulnerability at line 217",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-79",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.correctness.useless-eqeq",
+    "category": "correctness",
+    "path": "app/utils/crypto.py",
+    "start": {
+      "line": 143,
+      "col": 18
+    },
+    "end": {
+      "line": 150,
+      "col": 43
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential correctness vulnerability at line 143",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-89",
+        "fix": null
+      }
+    },
+    "label": 0
+  },
+  {
+    "check_id": "python.lang.security.audit.formatted-sql-query",
+    "category": "sqli",
+    "path": "app/routes/user.py",
+    "start": {
+      "line": 194,
+      "col": 30
+    },
+    "end": {
+      "line": 198,
+      "col": 40
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential sqli vulnerability at line 194",
+      "metadata": {
+        "confidence": "HIGH",
+        "cwe": "CWE-79",
+        "fix": "Use parameterized queries"
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.flask.security.insecure-deserialization",
+    "category": "deserialization",
+    "path": "app/api/auth.py",
+    "start": {
+      "line": 169,
+      "col": 15
+    },
+    "end": {
+      "line": 171,
+      "col": 29
+    },
+    "extra": {
+      "severity": "WARNING",
+      "message": "Potential deserialization vulnerability at line 169",
+      "metadata": {
+        "confidence": "LOW",
+        "cwe": "CWE-79",
+        "fix": null
+      }
+    },
+    "label": 1
+  },
+  {
+    "check_id": "python.lang.correctness.useless-eqeq",
+    "category": "correctness",
+    "path": "tests/test_auth.py",
+    "start": {
+      "line": 201,
+      "col": 14
+    },
+    "end": {
+      "line": 208,
+      "col": 32
+    },
+    "extra": {
+      "severity": "ERROR",
+      "message": "Potential correctness vulnerability at line 201",
+      "metadata": {
+        "confidence": "MEDIUM",
+        "cwe": "CWE-601",
+        "fix": null
+      }
+    },
+    "label": 0
+  }
+]
