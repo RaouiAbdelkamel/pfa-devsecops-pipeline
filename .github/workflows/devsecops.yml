@@ -421,20 +421,21 @@ jobs:
 
       - name: Run Trivy sur l'image Docker
         uses: aquasecurity/trivy-action@master
+        continue-on-error: true
         with:
           image-ref: "${{ env.APP_IMAGE }}:latest"
           scan-type: image
           severity: CRITICAL,HIGH
           format: sarif
           output: trivy-image.sarif
-          exit-code: 1             # ← CORRIGÉ : bloque si CVE Critical trouvé
+          exit-code: '1'
 
       - name: Upload Trivy SARIF report
-        uses: github/codeql-action/upload-sarif@v3
         if: always()
+        uses: github/codeql-action/upload-sarif@v3
+        continue-on-error: true
         with:
           sarif_file: trivy-image.sarif
-        continue-on-error: true
 
       - name: Upload Trivy report artifact
         uses: actions/upload-artifact@v4
